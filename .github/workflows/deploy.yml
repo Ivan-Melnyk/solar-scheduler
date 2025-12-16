@@ -9,11 +9,12 @@ jobs:
     timeout-minutes: 60
     environment: production
     steps:
+      - uses: actions/checkout@v4
       - name: Create env variables file
         run: |
-          echo "github = ${{ toJson(github) }}"
+          echo "USERNAME=${{ secrets.USERNAME }}" >> ${{ github.workspace }}/.env
+          echo "PASSWORD=${{ secrets.PASSWORD }}" >> ${{ github.workspace }}/.env
         shell: bash
-      - uses: actions/checkout@v4
       - name: Build & Deploy Worker
         uses: cloudflare/wrangler-action@v3
         with:
