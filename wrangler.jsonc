@@ -1,10 +1,14 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "solar-scheduler",
-  "main": "src/index.ts",
+  "main": "worker/index.ts",
   "compatibility_date": "2025-12-16",
   "dev": {
     "port": 3000
+  },
+  "assets": {
+    "directory": "public",
+    "not_found_handling": "404-page"
   }
   // "compatibility_flags": [
   //   "nodejs_compat"
