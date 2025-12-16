@@ -3,6 +3,9 @@ on:
   push:
     branches:
       - main
+env:
+  USERNAME: ${{ vars.USERNAME }}
+  PASSWORD: ${{ vars.PASSWORD }}
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -15,10 +18,3 @@ jobs:
           wranglerVersion: "4.55.0"
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-        #   environment: "production"
-        #   secrets: |
-        #     USERNAME
-        #     PASSWORD
-        env:
-          USERNAME: ${{ env.USERNAME }}
-          PASSWORD: ${{ env.PASSWORD }}
