@@ -20,5 +20,5 @@ jobs:
         #     USERNAME
         #     PASSWORD
         env:
-          USERNAME: ${{ vars.USERNAME }}
-          PASSWORD: ${{ vars.PASSWORD }}
+          USERNAME: ${{ env.USERNAME }}
+          PASSWORD: ${{ env.PASSWORD }}
