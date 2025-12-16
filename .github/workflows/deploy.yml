@@ -11,9 +11,8 @@ jobs:
     steps:
       - name: Create env variables file
         run: |
-          echo "USERNAME=${{ secrets.USERNAME }}" >> .env
-          echo "PASSWORD=${{ secrets.PASSWORD }}" >> .env
-          ls -alh
+          echo "github.action_path = ${{ github.action_path }}"
+          echo "current directory is $(pwd)"
         shell: bash
       - uses: actions/checkout@v4
       - name: Build & Deploy Worker
