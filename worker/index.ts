@@ -1,5 +1,10 @@
+import { DurableObject } from 'cloudflare:workers'
 import { Hono } from 'hono'
 import { basicAuth } from 'hono/basic-auth'
+
+export interface Env {
+  SOLAR_SCHEDULER: DurableObjectNamespace<SolarScheduler>
+}
 
 type Bindings = {
   USERNAME: string
@@ -24,4 +29,12 @@ app.get('/', (c) => {
   return c.text('Hello Hono!')
 })
 
-export default app
+export default app satisfies ExportedHandler<Env>
+
+export class SolarScheduler extends DurableObject {
+  constructor(ctx: DurableObjectState, env: Env) {
+    super(ctx, env)
+  }
+
+  // other methods
+}

@@ -1,5 +1,5 @@
 {
-  "$schema": "node_modules/wrangler/config-schema.json",
+  "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "solar-scheduler",
   "main": "worker/index.ts",
   "minify": true,
@@ -10,7 +10,23 @@
   "assets": {
     "directory": "public",
     "not_found_handling": "404-page"
-  }
+  },
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "SOLAR_SCHEDULER",
+        "class_name": "SolarScheduler"
+      }
+    ]
+  },
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_sqlite_classes": [
+        "SolarScheduler"
+      ]
+    }
+  ]
   // "compatibility_flags": [
   //   "nodejs_compat"
   // ],
