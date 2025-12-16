@@ -7,11 +7,12 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     timeout-minutes: 60
+    environment: production
     steps:
       - name: Create env variables file
         run: |
-          echo "USERNAME=${{ vars.USERNAME }}" >> .env
-          echo "PASSWORD=${{ vars.PASSWORD }}" >> .env
+          echo "USERNAME=${{ secrets.USERNAME }}" >> .env
+          echo "PASSWORD=${{ secrets.PASSWORD }}" >> .env
           cat .env
         shell: bash
       - uses: actions/checkout@v4
