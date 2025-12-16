@@ -2,6 +2,7 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "solar-scheduler",
   "main": "worker/index.ts",
+  "minify": true,
   "compatibility_date": "2025-12-16",
   "dev": {
     "port": 3000
