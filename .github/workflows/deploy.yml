@@ -11,8 +11,7 @@ jobs:
     steps:
       - name: Create env variables file
         run: |
-          echo "github.action_path = ${{ github.action_path }}"
-          echo "current directory is $(pwd)"
+          echo "github = ${{ toJson(github) }}"
         shell: bash
       - uses: actions/checkout@v4
       - name: Build & Deploy Worker
