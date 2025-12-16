@@ -13,7 +13,7 @@ jobs:
         run: |
           echo "USERNAME=${{ secrets.USERNAME }}" >> .env
           echo "PASSWORD=${{ secrets.PASSWORD }}" >> .env
-          cat .env
+          ls -alh
         shell: bash
       - uses: actions/checkout@v4
       - name: Build & Deploy Worker
