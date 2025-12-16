@@ -10,13 +10,6 @@ jobs:
     environment: production
     steps:
       - uses: actions/checkout@v4
-      - name: Create env variables file
-        run: |
-          echo "USERNAME=${{ secrets.USERNAME }}" >> ${{ github.workspace }}/.env
-          echo "PASSWORD=${{ secrets.PASSWORD }}" >> ${{ github.workspace }}/.env
-          ls -lah ${{ github.workspace }}
-          cat ${{ github.workspace }}/.env
-        shell: bash
       - name: Build & Deploy Worker
         uses: cloudflare/wrangler-action@v3
         with:

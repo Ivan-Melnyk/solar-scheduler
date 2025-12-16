@@ -27,9 +27,9 @@
       ]
     }
   ],
-  "compatibility_flags": [
-    "nodejs_compat"
-  ],
+  // "compatibility_flags": [
+  //   "nodejs_compat"
+  // ],
   "observability": {
     "enabled": true,
     "head_sampling_rate": 1,
@@ -40,6 +40,18 @@
       "persist": true
     }
   },
+  "secrets_store_secrets": [
+    {
+      "binding": "USERNAME",
+      "store_id": "04e13ae1eb9d4881b5ee61d6ca647058",
+      "secret_name": "USERNAME"
+    },
+    {
+      "binding": "PASSWORD",
+      "store_id": "04e13ae1eb9d4881b5ee61d6ca647058",
+      "secret_name": "PASSWORD"
+    }
+  ],
   // "vars": {
   //   "MY_VAR": "my-variable"
   // },
