@@ -7,29 +7,32 @@ export interface Env {
 }
 
 type Bindings = {
-  USERNAME: string
-  PASSWORD: string
+  USERNAME: SecretsStoreSecret
+  PASSWORD: SecretsStoreSecret
 }
 
 const app = new Hono<{ Bindings: Bindings }>()
 
 app.use('/admin/*', async (c, next) => {
+  const USERNAME = await c.env.USERNAME.get()
+  const PASSWORD = await c.env.PASSWORD.get()
   const auth = basicAuth({
-    username: c.env.USERNAME,
-    password: c.env.PASSWORD,
+    username: USERNAME,
+    password: PASSWORD,
   })
   return auth(c, next)
 })
 
-app.get('/admin', (c) => {
-  return c.text('You are Authorized!')
+app.get('/admin', async (c) => {
+  return c.text(`You are Authorized!`)
 })
 
 app.get('/', (c) => {
   return c.text('Hello Hono!')
 })
 
-export default app satisfies ExportedHandler<Env>
+// export default app satisfies ExportedHandler<Env>
+export default app
 
 export class SolarScheduler extends DurableObject {
   constructor(ctx: DurableObjectState, env: Env) {

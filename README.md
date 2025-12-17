@@ -6,7 +6,12 @@ Stack of technologies: Cloudflare Durable Objects with Workers and SQLite storag
 These scripts helps to automate the Solar Scheduler of the FOX ESS (to be extended to support different solar vendors), so the batteries are automatically charged during the time of the chiepest grid tarrifs if no enough sun on the sky next day to charge the batteries from PV.
 
 # Userful Commands
-Add Secret to Cloudflare Secret Store:
+Add Secret to Cloudflare Secret Store (remote):
 ```bash
-npx wrangler secrets-store create <SecretStoreID> --name <SecretName> --scope workers --remote
+npx wrangler secrets-store store create <SecretStoreID> --name <SecretName> --scopes workers --remote
+```
+
+Add Secret to CLoudflare Secret Store (local):
+```bash
+npx wrangler secrets-store secret create <SecretStoreID> --name <SecretName> --scopes workers
 ```
