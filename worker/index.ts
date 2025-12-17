@@ -4,6 +4,8 @@ import { basicAuth } from 'hono/basic-auth'
 
 export interface Env {
   SOLAR_SCHEDULER: DurableObjectNamespace<SolarScheduler>
+  USERNAME: SecretsStoreSecret
+  PASSWORD: SecretsStoreSecret
 }
 
 type Bindings = {
